@@ -20,3 +20,50 @@ nav.onclick = function(){
     nav.classList.remove('nav-active');
     phoneLink.classList.remove('phone-active');
 }
+
+// reviws
+
+const slider = document.querySelector('.swiper-container');
+
+let mySwiper = new Swiper(slider, {
+	slidesPerView: 1,
+	// spaceBetween: -30,
+	loop: true,
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        991: {
+            slidesPerView: 2,
+        },
+	},
+})
+
+// phone
+$(function(){
+    $('#phone').mask('+7(999) 999-99-99');
+  })
+
+
+const flower = document.querySelectorAll('.flower');
+// const watchBtn = document.querySelector('.flowers');
+
+
+//   flower.forEach(function(item) {
+//     item.onclick = function () {
+      
+//         item.classList.toggle('flower__active');
+// };
+// });
+
+flower.forEach(function(item) {
+  item.onclick = function () {
+    flower.forEach(function(element) {
+          if (element.classList.contains('flower__active')) {
+              element.classList.remove('flower__active');
+          }
+      });
+      item.classList.add('flower__active');
+  };
+});
