@@ -119,7 +119,7 @@ $(document).ready(function() {
 			url: "mail.php", //Change
 			data: th.serialize()
 		}).done(function() {
-      formAfter()
+			alert("Спасибо, ваши данные успешно отправлены!");
 			setTimeout(function() {
 				// Done Functions
 				th.trigger("reset");
@@ -129,21 +129,3 @@ $(document).ready(function() {
 	});
 
 });
-
-// formAfter
-const modalAfter = document.querySelector('.modal__after')
-const closeModalBtn = document.querySelector('.modal--close')
-
-function formAfter() {
-  modalAfter.classList.add('modal--open')
-  body.classList.add('body-lock')
-  html.classList.add('html-lock')
-  modal.classList.remove('modal--open')
-  
-  closeModalBtn.addEventListener('click', e => {
-    e.preventDefault()
-    
-    body.classList.remove('body-lock');
-    modalAfter.classList.remove('modal--open')
-  })
-}

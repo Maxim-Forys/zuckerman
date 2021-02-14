@@ -70,6 +70,20 @@ let im = new Inputmask('+375 (99) 999-99-99');
 im.mask(inputs);
 
 
+const flower = document.querySelectorAll('.flower');
+
+flower.forEach(function(item) {
+  item.onclick = function () {
+    flower.forEach(function(element) {
+          if (element.classList.contains('flower__active')) {
+              element.classList.remove('flower__active');
+          }
+      });
+      item.classList.add('flower__active');
+  };
+});
+
+
 // Modal
 const modal = document.querySelector('.modal')
 const openModalButton = document.querySelectorAll('.open__popup')
@@ -138,7 +152,7 @@ $(document).ready(function() {
 			url: "mail.php", //Change
 			data: th.serialize()
 		}).done(function() {
-			formAfter();
+			alert("Спасибо, ваши данные успешно отправлены!");
 			setTimeout(function() {
 				// Done Functions
 				th.trigger("reset");
@@ -148,21 +162,3 @@ $(document).ready(function() {
 	});
 
 });
-
-// formAfter
-const modalAfter = document.querySelector('.modal__after')
-const closeModalBtn = document.querySelector('.modal--close')
-
-function formAfter() {
-  modalAfter.classList.add('modal--open')
-  body.classList.add('body-lock')
-  html.classList.add('html-lock')
-  modal.classList.remove('modal--open')
-  
-  closeModalBtn.addEventListener('click', e => {
-    e.preventDefault()
-    
-    body.classList.remove('body-lock');
-    modalAfter.classList.remove('modal--open')
-  })
-}
