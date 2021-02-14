@@ -21,53 +21,14 @@ nav.onclick = function(){
     phoneLink.classList.remove('phone-active');
 }
 
-// swiper
+const tab = document.querySelectorAll('.tab');
 
-const slider = document.querySelector('.swiper-container');
-
-let mySwiper = new Swiper(slider, {
-	slidesPerView: 1,
-  loop: false,
-
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        991: {
-            slidesPerView: 2,
-            
-        },
-	},
-})
-
-const slider1 = document.querySelector('.subscribe-container');
-
-let mySwiper1 = new Swiper(slider1, {
-	slidesPerView: 3,
-    spaceBetween: 0,    
-    initialSlide: 1,
-    centeredSlides: true,
-	loop: true,
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-    },
-    breakpoints: {
-        767: {
-            spaceBetween: 10, 
-        },
-	},
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
+tab.forEach(function(item) {
+    item.onclick = function () {
+      
+        item.classList.toggle('tab__active');
+};
 });
-
-// inputMask
-let inputs = document.querySelectorAll('.phone');
-let im = new Inputmask('+375 (99) 999-99-99');
-im.mask(inputs);
 
 
 // Modal
@@ -128,6 +89,26 @@ footerLink.forEach(function(item) {
 };
 });
 
+// inputMask
+let inputs = document.querySelector('.phone');
+let im = new Inputmask('+375 (99) 999-99-99');
+im.mask(inputs);
+
+
+const flower = document.querySelectorAll('.flower');
+
+flower.forEach(function(item) {
+  item.onclick = function () {
+    flower.forEach(function(element) {
+          if (element.classList.contains('flower__active')) {
+              element.classList.remove('flower__active');
+          }
+      });
+      item.classList.add('flower__active');
+  };
+});
+
+
 $(document).ready(function() {
 
 	//E-mail Ajax Send
@@ -138,7 +119,7 @@ $(document).ready(function() {
 			url: "mail.php", //Change
 			data: th.serialize()
 		}).done(function() {
-			formAfter();
+      formAfter()
 			setTimeout(function() {
 				// Done Functions
 				th.trigger("reset");
